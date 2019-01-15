@@ -52,7 +52,7 @@ namespace PatchFrYgopro
                     }
                     listFinal.Add(textAdd);
                 }
-                File.WriteAllLines(files.Replace("ygopro_vs_links.exe", "") + @"strings.conf", listFinal.ToArray());
+                File.WriteAllLines(files.Replace("ygopro_vs_links.exe", "") + @"strings.conf", listFinal.Distinct().ToArray());
             }
             MessageBox.Show("Patch fini :) !");
         }
