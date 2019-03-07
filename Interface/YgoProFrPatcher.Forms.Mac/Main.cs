@@ -1,5 +1,4 @@
 ﻿using AppKit;
-using Syncfusion.ListView.XForms.MacOS;
 using Xamarin.Forms.Platform.MacOS;
 
 namespace YgoProFrPatcher.Forms.Mac
