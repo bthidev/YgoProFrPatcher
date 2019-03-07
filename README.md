@@ -1,1 +1,1 @@
-YgoProFrPatcher
+Autopatcher pour basculer ygopro percy en francais , compatible pc et mac

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:MvxContentPage xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms" x:TypeArguments="page:MenuViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False" xmlns:viewModels="clr-namespace:YgoProFrPatcher.Core.ViewModels.Page;assembly=YgoProFrPatcher.Core"
+    xmlns:page="clr-namespace:YgoProFrPatcher.Core.ViewModels.Page" x:Class="YgoProFrPatcher.Core.Pages.SubPage.MenuView"
+    Title="Menu" WidthRequest="0">
+    <ContentPage.Content>
+        <ListView x:Name="MenuListControl" ItemsSource="{Binding MenuList}"
+            VerticalScrollBarVisibility="Never" ItemTapped="Handle_ItemTapped" SeparatorColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Button Text="{Binding}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</views:MvxContentPage>

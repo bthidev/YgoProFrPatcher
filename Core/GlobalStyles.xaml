@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:Class="YgoProFrPatcher.Core.GlobalStyles">
+
+    <!-- Fonts -->
+    <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+        <On Platform="Android" Value="Material Design Icons.ttf#Material Design Icons"/>
+        <On Platform="iOS" Value="Material Design Icons" />
+        <On Platform="macOS" Value="Material Design Icons" />
+        <On Platform ="WPF" Value="Assets/#Material Design Icons"/>
+    </OnPlatform>
+    <!-- Colors -->
+    <Color x:Key="DarkGrey">#333</Color>
+    <Color x:Key="Magenta">#E20074</Color>
+    <Color x:Key="LightMagenta">#FFF499C8</Color>
+    <Color x:Key="DarkMagenta">#A10053</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="Grey">#9B9B9B</Color>
+    <Color x:Key="LightishGrey">#EAEAEA</Color>
+    <Color x:Key="LightGrey">#E8E8E8</Color>
+    <Color x:Key="LighterGrey">#FAFAFA</Color>
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Success">#29C971</Color>
+    <Color x:Key="Error">#BD1C37</Color>
+    <Color x:Key="Blue">#4A90E2</Color>
+    <Color x:Key="Red">#FF0000</Color>
+    <Color x:Key="Yellow">#F6A623</Color>
+    <Color x:Key="Green">#2FC96E</Color>
+    <Color x:Key="PageBackground">White</Color>
+    <Color x:Key="Transparent">Transparent</Color>
+    <Color x:Key="Silver">#243447</Color>
+    <Color x:Key="PrimaryColor">#333333</Color>
+    <Color x:Key="SecondaryColor">#141215</Color>
+    <Color x:Key="AccentColor">#0099CC</Color>
+    <!-- Styles -->
+
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
+        <Setter Property="FontSize" >
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="Android" Value="10" />
+                <On Platform="WPF, macOS, iOS" Value="20" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+    <Style TargetType="Label">
+        <Setter  Property="FontSize" >
+            <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="Android, iOS" Value="12" />
+                <On Platform="WPF, macOS" Value="20.5" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource Silver}"/>
+    </Style>   
+    
+</ResourceDictionary>
