@@ -4,14 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     x:Class="YgoProFrPatcher.Core.GlobalStyles">
-
-    <!-- Fonts -->
-    <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
-        <On Platform="Android" Value="Material Design Icons.ttf#Material Design Icons"/>
-        <On Platform="iOS" Value="Material Design Icons" />
-        <On Platform="macOS" Value="Material Design Icons" />
-        <On Platform ="WPF" Value="Assets/#Material Design Icons"/>
-    </OnPlatform>
+    
     <!-- Colors -->
     <Color x:Key="DarkGrey">#333</Color>
     <Color x:Key="Magenta">#E20074</Color>
@@ -36,26 +29,5 @@
     <Color x:Key="SecondaryColor">#141215</Color>
     <Color x:Key="AccentColor">#0099CC</Color>
     <!-- Styles -->
-
-    <Style TargetType="Button">
-        <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
-        <Setter Property="FontSize" >
-            <OnPlatform x:TypeArguments="x:Double">
-                <On Platform="Android" Value="10" />
-                <On Platform="WPF, macOS, iOS" Value="20" />
-            </OnPlatform>
-        </Setter>
-    </Style>
-    <Style TargetType="Label">
-        <Setter  Property="FontSize" >
-            <OnPlatform x:TypeArguments="x:Double">
-                <On Platform="Android, iOS" Value="12" />
-                <On Platform="WPF, macOS" Value="20.5" />
-            </OnPlatform>
-        </Setter>
-    </Style>
-    <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource Silver}"/>
-    </Style>   
     
 </ResourceDictionary>

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace YgoProFrPatcher.Core.ViewModels.Page
 {
@@ -33,10 +34,13 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             var path = CrossFilePicker.Current.PickFile().GetAwaiter().GetResult();
             if (path != null)
             {
+                var baseFolder = "";
+                if (Device.RuntimePlatform == Device.WPF)
+                    baseFolder = baseFolder+"";
                 string files = path.FilePath;
-                File.Copy("./Resources/cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
-                File.Copy("./Resources/config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
-                var frFile = File.ReadAllLines("./Resources/strings.conf");
+                File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
+                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
+                var frFile = File.ReadAllLines(baseFolder+"strings.conf");
                 var frList = new List<string>(frFile).Where(w => w.StartsWith("!")).ToList();
                 var enFile = File.ReadAllLines(files.Replace(path.FileName, "") + @"strings.conf");
                 var enList = new List<string>(enFile).Where(w => w.StartsWith("!")).ToList();

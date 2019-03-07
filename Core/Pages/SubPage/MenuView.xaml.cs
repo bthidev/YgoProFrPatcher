@@ -14,7 +14,7 @@ namespace YgoProFrPatcher.Core.Pages.SubPage
         public MenuView()
         {
             InitializeComponent();
-            
+            Title = "Menu";
         }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
