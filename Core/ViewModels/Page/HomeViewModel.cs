@@ -36,7 +36,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             {
                 var baseFolder = "";
                 if (Device.RuntimePlatform == Device.WPF)
-                    baseFolder = baseFolder+"";
+                    baseFolder = "./Resources/";
                 string files = path.FilePath;
                 File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
                 File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
