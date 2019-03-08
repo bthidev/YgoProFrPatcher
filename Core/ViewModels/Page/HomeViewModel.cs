@@ -31,38 +31,28 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
         private void Run()
         {
             var path = CrossFilePicker.Current.PickFile().GetAwaiter().GetResult();
-            if (path != null)
+            if (path == null) return;
+            var baseFolder = "";
+            if (Device.RuntimePlatform == Device.WPF)
+                baseFolder = "./Resources/";
+            string files = path.FilePath;
+            File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
+            File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
+            var frFile = File.ReadAllLines(baseFolder+"strings.conf");
+            var frList = new List<string>(frFile).Where(w => w.StartsWith("!")).ToList();
+            var enFile = File.ReadAllLines(files.Replace(path.FileName, "") + @"strings.conf");
+            var enList = new List<string>(enFile).Where(w => w.StartsWith("!")).ToList();
+            var listFinal = new List<string> {"#The first line is used for comment"};
+            Console.WriteLine(@"Trans strings.conf");
+            foreach (var text in enList)
             {
-                var baseFolder = "";
-                if (Device.RuntimePlatform == Device.WPF)
-                    baseFolder = "./Resources/";
-                string files = path.FilePath;
-                File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
-                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
-                var frFile = File.ReadAllLines(baseFolder+"strings.conf");
-                var frList = new List<string>(frFile).Where(w => w.StartsWith("!")).ToList();
-                var enFile = File.ReadAllLines(files.Replace(path.FileName, "") + @"strings.conf");
-                var enList = new List<string>(enFile).Where(w => w.StartsWith("!")).ToList();
-                var listFinal = new List<string>();
-                listFinal.Add("#The first line is used for comment");
-                Console.WriteLine(@"Trans strings.conf");
-                foreach (var text in enList)
-                {
-                    var textAdd = "";
-                    var index = frList.FindIndex(w => w.Split(' ')[1] == text.Split(' ')[1]);
-                    if (index >= 0)
-                    {
-                        textAdd = frList[index];
-                    }
-                    else
-                    {
-                        textAdd = text;
-                    }
-                    listFinal.Add(textAdd);
-                }
-                File.WriteAllLines(files.Replace(path.FileName, "") + @"strings.conf", listFinal.Distinct().ToArray());
-                Text = "fini !!";
+                var textAdd = "";
+                var index = frList.FindIndex(w => w.Split(' ')[1] == text.Split(' ')[1]);
+                textAdd = index >= 0 ? frList[index] : text;
+                listFinal.Add(textAdd);
             }
+            File.WriteAllLines(files.Replace(path.FileName, "") + @"strings.conf", listFinal.Distinct().ToArray());
+            Text = "fini !!";
         }
     }
 }
