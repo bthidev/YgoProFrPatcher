@@ -18,7 +18,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
         public HomeViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) :
             base(logProvider, navigationService)
         {
-            ShowInitialViewModelsCommand = new MvxCommand(run);
+            ShowInitialViewModelsCommand = new MvxCommand(Run);
             _text = "";
         }
 
@@ -28,9 +28,8 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             get => _text;
             set => SetProperty(ref _text, value);
         }
-        private void run()
+        private void Run()
         {
-            var test = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceNames();
             var path = CrossFilePicker.Current.PickFile().GetAwaiter().GetResult();
             if (path != null)
             {
@@ -49,7 +48,6 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 Console.WriteLine(@"Trans strings.conf");
                 foreach (var text in enList)
                 {
-                    var temp = text.Split(' ')[1];
                     var textAdd = "";
                     var index = frList.FindIndex(w => w.Split(' ')[1] == text.Split(' ')[1]);
                     if (index >= 0)

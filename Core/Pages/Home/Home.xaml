@@ -4,8 +4,7 @@
     x:TypeArguments="page:HomeViewModel"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="YgoProFrPatcher.Core.Home.Home"
-    xmlns:viewModels="clr-namespace:YgoProFrPatcher.Core.ViewModels"
+    x:Class="YgoProFrPatcher.Core.Pages.Home.Home"
     xmlns:page="clr-namespace:YgoProFrPatcher.Core.ViewModels.Page" >
 
     

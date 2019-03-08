@@ -6,7 +6,7 @@ using YgoProFrPatcher.Core;
 namespace YgoProFrPatcher.Forms.Mac
 {
     [Register("AppDelegate")]
-    public class AppDelegate : MvxFormsApplicationDelegate<Setup, Core.App, FormsApp>
+    public class AppDelegate : MvxFormsApplicationDelegate<Setup, App, FormsApp>
     {
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
         {
@@ -14,16 +14,7 @@ namespace YgoProFrPatcher.Forms.Mac
         }
     }
 
-    public class Setup : MvxFormsMacSetup<Core.App, FormsApp>
+    public class Setup : MvxFormsMacSetup<App, FormsApp>
     {
-        protected override void InitializePlatformServices()
-        {
-            base.InitializePlatformServices();
-        }
-
-        protected override void InitializeLastChance()
-        {
-            base.InitializeLastChance();
-        }
     }
 }

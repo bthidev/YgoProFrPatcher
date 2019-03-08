@@ -17,13 +17,13 @@ namespace YgoProFrPatcher.Core.Pages.SubPage
             Title = "Menu";
         }
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-                if (Xamarin.Forms.Application.Current.MainPage is MasterDetailPage masterDetailPage)
+                if (Application.Current.MainPage is MasterDetailPage masterDetailPage)
                 {
                     masterDetailPage.IsPresented = false;
                 }
-                else if (Xamarin.Forms.Application.Current.MainPage is NavigationPage navigationPage && navigationPage.CurrentPage is MasterDetailPage nestedMasterDetail)
+                else if (Application.Current.MainPage is NavigationPage navigationPage && navigationPage.CurrentPage is MasterDetailPage nestedMasterDetail)
                 {
                     nestedMasterDetail.IsPresented = false;
                 }

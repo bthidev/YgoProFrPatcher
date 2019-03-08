@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using AppKit;
-using Xamarin.Forms.Platform.MacOS;
 
 namespace YgoProFrPatcher.Forms.Mac
 {
@@ -10,7 +9,7 @@ namespace YgoProFrPatcher.Forms.Mac
         {
             NSApplication.Init();
             NSApplication.SharedApplication.Delegate = new AppDelegate();
-            var temp = Directory.GetCurrentDirectory();
+            Directory.GetCurrentDirectory();
             NSApplication.Main(args);
         }
 
