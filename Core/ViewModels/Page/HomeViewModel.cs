@@ -37,7 +37,10 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 baseFolder = "./Resources/";
             string files = path.FilePath;
             File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
-            File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
+            if (Device.RuntimePlatform != Device.WPF)
+                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions/live2017links/.git/config", true);
+            else
+                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
             var frFile = File.ReadAllLines(baseFolder+"strings.conf");
             var frList = new List<string>(frFile).Where(w => w.StartsWith("!")).ToList();
             var enFile = File.ReadAllLines(files.Replace(path.FileName, "") + @"strings.conf");
