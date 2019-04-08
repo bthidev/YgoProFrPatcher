@@ -135,10 +135,6 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 {
                     Autoupdate = true;
                 }
-                if ( Carte == "es")
-                {
-                    Autoupdate = false;
-                }
                 SetLang(InterFace);
                 SetCard(Carte);
                 SetAuto(Autoupdate);
@@ -189,6 +185,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             }
             else
             {
+                Autoupdate = false;
                 File.Copy("./ypfr/en/config", exactPath, true);
                 EnableAuto = false;
                 CultureInfo myCultureInfo = new CultureInfo(InterFace);
