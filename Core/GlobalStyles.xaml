@@ -28,5 +28,17 @@
     <Color x:Key="SecondaryColor">#141215</Color>
     <Color x:Key="AccentColor">#0099CC</Color>
     <!-- Styles -->
-    
+    <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+        <On Platform="macOS" Value="Material Design Icons" />
+        <On Platform ="WPF" Value="Assets/#Ubuntu"/>
+    </OnPlatform>
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
+    </Style>
+    <Style TargetType="Picker">
+        <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
+    </Style>
 </ResourceDictionary>

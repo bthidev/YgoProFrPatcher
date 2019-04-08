@@ -14,62 +14,36 @@
     <None Remove="Services\**" />
     <None Remove="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="Resources\ListCardViewModel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\ListDeckViewModel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\ListSetViewModel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\SettingViewModel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\SetViewModel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  
 
   <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.26.0" />
     <PackageReference Include="MvvmCross" Version="6.3.0-alpha.385" />
     <PackageReference Include="MvvmCross.Forms" Version="6.3.0-alpha.385" />
     <PackageReference Include="MvvmCross.Plugin.Json" Version="6.3.0-alpha.385" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="6.3.0-alpha.385" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.3.0-alpha.385" />
     <PackageReference Include="MvvmCross.Plugin.Network" Version="6.3.0-alpha.385" />
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.169046-pre5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.304370-pre8" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.14-beta" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="MvvmCross.Forms, Version=6.2.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\.nuget\packages\mvvmcross.forms\6.2.2\lib\xamarinios10\MvvmCross.Forms.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Pages\Home\Home.xaml.cs">
+    <Compile Update="View\Home\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppRessource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppRessource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <EmbeddedResource Update="Resources\AppRessource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppRessource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\DataFile\cards.cdb" Link="Resources\cards.cdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\DataFile\config" Link="Resources\config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\ypfr\strings.conf">
-      <Link>Resources/strings.conf</Link>
-    </Content>
-  </ItemGroup>
-  <ProjectExtensions><VisualStudio><UserProperties Resources_4Text_1json__JSONSchema="http://json.schemastore.org/schema-catalog" /></VisualStudio></ProjectExtensions>
 
 </Project>

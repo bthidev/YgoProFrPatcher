@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.props')" />
+  <Import Project="..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\LibGit2Sharp.NativeBinaries.props" Condition="Exists('..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\LibGit2Sharp.NativeBinaries.props')" />
+  <Import Project="..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -91,6 +92,9 @@
     <ImageAsset Include="Assets.xcassets\Contents.json" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="LibGit2Sharp, Version=0.26.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LibGit2Sharp.0.26.0\lib\netstandard2.0\LibGit2Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="MvvmCross, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.6.3.0-alpha.385\lib\xamarinmac20\MvvmCross.dll</HintPath>
     </Reference>
@@ -115,9 +119,8 @@
     <Reference Include="MvvmCross.Plugin.ResourceLoader, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Plugin.ResourceLoader.6.3.0-alpha.385\lib\xamarinmac20\MvvmCross.Plugin.ResourceLoader.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2-beta1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.FilePicker, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Plugin.FilePicker.2.1.14-beta\lib\xamarinmac20\Plugin.FilePicker.dll</HintPath>
@@ -127,16 +130,16 @@
       <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0-preview3.19128.7\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\lib\Xamarin.Mac\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\lib\Xamarin.Mac\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform.macOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\lib\Xamarin.Mac\Xamarin.Forms.Platform.macOS.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Platform.macOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\lib\Xamarin.Mac\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Mac" />
     <Reference Include="netstandard" />
@@ -160,27 +163,15 @@
       <Name>YgoProFrPatcher.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\DataFile\config">
-      <Link>Resources\config</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\DataFile\cards.cdb">
-      <Link>Resources\cards.cdb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\ypfr\strings.conf">
-      <Link>Resources/strings.conf</Link>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.props'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\LibGit2Sharp.NativeBinaries.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\build\LibGit2Sharp.NativeBinaries.props'))" />
   </Target>
-  <Import Project="..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.4.0.0.169046-pre5\build\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\build\Xamarin.Forms.targets')" />
 </Project>

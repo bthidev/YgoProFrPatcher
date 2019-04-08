@@ -1,3 +1,5 @@
+using LibGit2Sharp;
+using LibGit2Sharp.Handlers;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -5,57 +7,224 @@ using MvvmCross.ViewModels;
 using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using YgoProFrPatcher.Core.Model;
+using YgoProFrPatcher.Core.Resources;
+using YgoProFrPatcher.Core.Service;
 
 namespace YgoProFrPatcher.Core.ViewModels.Page
 {
     public class HomeViewModel : MvxNavigationViewModel
     {
-        private string _text;
+        private string _textInterface;
+        public string TextInterface
+        {
+            get => _textInterface;
+            set => SetProperty(ref _textInterface, value);
+        }
+        private string _textCartes;
+        public string TextCartes
+        {
+            get => _textCartes;
+            set => SetProperty(ref _textCartes, value);
+        }
+        private string _textUpdate;
+        public string TextUpdate
+        {
+            get => _textUpdate;
+            set => SetProperty(ref _textUpdate, value);
+        }
+        private string _textBug;
+        public string TextBug
+        {
+            get => _textBug;
+            set => SetProperty(ref _textBug, value);
+        }
+        private string _textStart;
+        public string TextStart
+        {
+            get => _textStart;
+            set => SetProperty(ref _textStart, value);
+        }
+        private string _textTitle;
+        public string TextTitle
+        {
+            get => _textTitle;
+            set => SetProperty(ref _textTitle, value);
+        }
 
-        public HomeViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) :
+        private string _interFace;
+        public string InterFace
+        {
+            get => _interFace;
+            set
+            {
+                var newval = false;
+                if (value != _interFace) newval = true;
+                SetProperty(ref _interFace, value);
+                update(newval);
+            }
+        }
+        private string _carte;
+        public string Carte
+        {
+            get => _carte;
+            set
+            {
+                var newval = false;
+                if (value != _carte) newval = true;
+                SetProperty(ref _carte, value);
+                update(newval);
+            }
+        }
+        bool _autoupdate;
+        public bool Autoupdate
+        {
+            get => _autoupdate;
+            set
+            {
+                var newval = false;
+                if ( value != _autoupdate) newval = true;
+                SetProperty(ref _autoupdate, value);
+                update(newval);
+            }
+        }
+
+        private List<string> _lstLang;
+        public List<string> ListLang
+        {
+            get => _lstLang;
+            set
+            {
+                SetProperty(ref _lstLang, value);
+            }
+        }
+
+        bool _enableAuto;
+        public bool EnableAuto
+        {
+            get => _enableAuto;
+            set
+            {
+                SetProperty(ref _enableAuto, value);
+            }
+        }
+
+        IConfigService _configService;
+        ConfigModel _config;
+
+        public HomeViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IConfigService configService) :
             base(logProvider, navigationService)
         {
-            ShowInitialViewModelsCommand = new MvxCommand(Run);
-            _text = "";
+            _configService = configService;
+            _config = _configService.GetConfig();
+            InterFace = _config.lngInterface;
+            Carte = _config.lngCard;
+            Autoupdate = _config.AutoUpdate;
         }
 
-        public MvxCommand ShowInitialViewModelsCommand { get; }
-        public string Text
+        private void update(bool update )
         {
-            get => _text;
-            set => SetProperty(ref _text, value);
-        }
-        private void Run()
-        {
-            var path = CrossFilePicker.Current.PickFile().GetAwaiter().GetResult();
-            if (path == null) return;
-            var baseFolder = "";
-            if (Device.RuntimePlatform == Device.WPF)
-                baseFolder = "./Resources/";
-            string files = path.FilePath;
-            File.Copy(baseFolder+"cards.cdb", files.Replace(path.FileName, "") + @"cards.cdb", true);
-            if (Device.RuntimePlatform != Device.WPF)
-                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions/live2017links/.git/config", true);
-            else
-                File.Copy(baseFolder+"config", files.Replace(path.FileName, "") + @"expansions\live2017links\.git\config", true);
-            var frFile = File.ReadAllLines(baseFolder+"strings.conf");
-            var frList = new List<string>(frFile).Where(w => w.StartsWith("!")).ToList();
-            var enFile = File.ReadAllLines(files.Replace(path.FileName, "") + @"strings.conf");
-            var enList = new List<string>(enFile).Where(w => w.StartsWith("!")).ToList();
-            var listFinal = new List<string> {"#The first line is used for comment"};
-            Console.WriteLine(@"Trans strings.conf");
-            foreach (var text in enList)
+            if (InterFace != null && Carte != null && update)
             {
-                var textAdd = "";
-                var index = frList.FindIndex(w => w.Split(' ')[1] == text.Split(' ')[1]);
-                textAdd = index >= 0 ? frList[index] : text;
-                listFinal.Add(textAdd);
+                if ( Carte == "en")
+                {
+                    Autoupdate = true;
+                }
+                if ( Carte == "es")
+                {
+                    Autoupdate = false;
+                }
+                SetLang(InterFace);
+                SetCard(Carte);
+                SetAuto(Autoupdate);
+                _config.lngInterface = InterFace;
+                _config.lngCard = Carte;
+                _config.AutoUpdate = Autoupdate;
+                _configService.SetConfig(_config);
             }
-            File.WriteAllLines(files.Replace(path.FileName, "") + @"strings.conf", listFinal.Distinct().ToArray());
-            Text = "fini !!";
         }
+        private void SetLang(string lang)
+        {
+            if (lang != null)
+            {
+                CultureInfo myCultureInfo = new CultureInfo(lang);
+                TextStart = AppRessource.ResourceManager.GetString("Lunch", myCultureInfo);
+                TextTitle = AppRessource.ResourceManager.GetString("ChooseLangue", myCultureInfo);
+                TextInterface = AppRessource.ResourceManager.GetString("ChooseInterface", myCultureInfo);
+                TextCartes = AppRessource.ResourceManager.GetString("ChooseCartes", myCultureInfo);
+                TextBug = AppRessource.ResourceManager.GetString("Bug", myCultureInfo);
+                TextUpdate = AppRessource.ResourceManager.GetString("AutoUpdate", myCultureInfo);
+                File.Copy("./ypfr/" + lang + "/strings.conf", "./strings.conf", true);
+            }
+        }
+        private void SetCard(string lang)
+        {
+            if (lang != null)
+            {
+                File.Copy("./ypfr/" + lang + "/cards.cdb", "./cards.cdb", true);
+            }
+        }
+        private void SetAuto(bool enable)
+        {
+            string exactPath = Path.GetFullPath("./expansions/live2017links/.git/config");
+            if (File.Exists("./ypfr/" + Carte + "/config"))
+            {
+                EnableAuto = true;
+
+                if (enable)
+                {
+                    File.Copy("./ypfr/" + Carte + "/config", exactPath, true);
+                    EnableAuto = true;
+                }
+                else
+                {
+                    File.Copy("./ypfr/en/config", exactPath, true);
+
+                }
+            }
+            else
+            {
+                File.Copy("./ypfr/en/config", exactPath, true);
+                EnableAuto = false;
+                CultureInfo myCultureInfo = new CultureInfo(InterFace);
+                TextUpdate = AppRessource.ResourceManager.GetString("NopeDispo", myCultureInfo);
+            }
+        }
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+            try
+            {
+                Repository.Clone("https://github.com/LucienAclantis/ypfr", "./ypfr");
+            }
+            catch (Exception e)
+            {
+            }
+            using (var repo = new Repository("./ypfr"))
+            {
+                // Credential information to fetch
+                LibGit2Sharp.PullOptions options = new LibGit2Sharp.PullOptions();
+                options.FetchOptions = new FetchOptions();
+                options.FetchOptions.CredentialsProvider = new CredentialsHandler(
+                    (url, usernameFromUrl, types) => new UsernamePasswordCredentials() { });
+
+                // User information to create a merge commit
+                var signature = new LibGit2Sharp.Signature(
+                    new Identity("speedi57", "thiebaut.benjamin@live.fr"), DateTimeOffset.Now);
+
+                // Pull
+                Commands.Pull(repo, signature, options);
+            }
+            List<string> lstlng = new List<string>();
+            Autoupdate = _config.AutoUpdate;
+            InterFace = (_config.lngInterface);
+            Carte = (_config.lngCard);
+        }
+
     }
 }

@@ -3,7 +3,10 @@
 // See the LICENSE file in the project root for more information.
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using System.Globalization;
+using YgoProFrPatcher.Core.Resources;
 using YgoProFrPatcher.Core.ViewModels;
+using YgoProFrPatcher.Core.ViewModels.Page;
 
 namespace YgoProFrPatcher.Core
 {
@@ -19,7 +22,7 @@ namespace YgoProFrPatcher.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-            RegisterAppStart<RootPageViewModel>();
+            RegisterAppStart<HomeViewModel>();
         }
     }
 }
