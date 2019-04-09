@@ -129,7 +129,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
 
         private void update(bool update )
         {
-            if (InterFace != null && Carte != null && update)
+            if (InterFace != null && Carte != null && update && Directory.Exists(GlobalStyles.GetRoot + "ypfr/"))
             {
                 if ( Carte == "en")
                 {
@@ -155,38 +155,38 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 TextCartes = AppRessource.ResourceManager.GetString("ChooseCartes", myCultureInfo);
                 TextBug = AppRessource.ResourceManager.GetString("Bug", myCultureInfo);
                 TextUpdate = AppRessource.ResourceManager.GetString("AutoUpdate", myCultureInfo);
-                File.Copy("./ypfr/" + lang + "/strings.conf", "./strings.conf", true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + " /strings.conf", "./strings.conf", true);
             }
         }
         private void SetCard(string lang)
         {
             if (lang != null)
             {
-                File.Copy("./ypfr/" + lang + "/cards.cdb", "./cards.cdb", true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/cards.cdb", "./cards.cdb", true);
             }
         }
         private void SetAuto(bool enable)
         {
-            string exactPath = Path.GetFullPath("./expansions/live2017links/.git/config");
-            if (File.Exists("./ypfr/" + Carte + "/config"))
+            string exactPath = Path.GetFullPath(GlobalStyles.GetRoot + "expansions /live2017links/.git/config");
+            if (File.Exists(GlobalStyles.GetRoot + "ypfr/" + Carte + "/config"))
             {
                 EnableAuto = true;
 
                 if (enable)
                 {
-                    File.Copy("./ypfr/" + Carte + "/config", exactPath, true);
+                    File.Copy(GlobalStyles.GetRoot + "ypfr/" + Carte + " /config", exactPath, true);
                     EnableAuto = true;
                 }
                 else
                 {
-                    File.Copy("./ypfr/en/config", exactPath, true);
+                    File.Copy(GlobalStyles.GetRoot + "ypfr/en/config", exactPath, true);
 
                 }
             }
             else
             {
                 Autoupdate = false;
-                File.Copy("./ypfr/en/config", exactPath, true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/en/config", exactPath, true);
                 EnableAuto = false;
                 CultureInfo myCultureInfo = new CultureInfo(InterFace);
                 TextUpdate = AppRessource.ResourceManager.GetString("NopeDispo", myCultureInfo);
@@ -197,12 +197,12 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             await base.Initialize();
             try
             {
-                Repository.Clone("https://github.com/LucienAclantis/ypfr", "./ypfr");
+                Repository.Clone("https://github.com/LucienAclantis/ypfr", GlobalStyles.GetRoot + "ypfr/");
             }
             catch (Exception e)
             {
             }
-            using (var repo = new Repository("./ypfr"))
+            using (var repo = new Repository(GlobalStyles.GetRoot + "ypfr/"))
             {
                 // Credential information to fetch
                 LibGit2Sharp.PullOptions options = new LibGit2Sharp.PullOptions();

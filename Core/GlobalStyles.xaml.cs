@@ -6,5 +6,6 @@
 		{
 			InitializeComponent ();
 		}
+        public static string GetRoot{ get { return "./";} }
 	}
 }

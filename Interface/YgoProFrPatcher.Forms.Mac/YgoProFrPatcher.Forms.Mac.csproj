@@ -138,11 +138,11 @@
     <Reference Include="Xamarin.Forms.Platform.macOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Platform.macOS.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Mac" />
+    <Reference Include="netstandard" />
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.4.0.0.304370-pre8\lib\Xamarin.Mac\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Mac" />
-    <Reference Include="netstandard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -156,12 +156,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Resources\Ressources\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\YgoProFrPatcher.Core.csproj">
       <Project>{52651F83-ED9C-41E1-9D1C-0A7C9644D141}</Project>
       <Name>YgoProFrPatcher.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\DataFile\bug.png">
+      <Link>Resources\Ressources\bug.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\DataFile\Help.png">
+      <Link>Resources\Ressources\Help.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
