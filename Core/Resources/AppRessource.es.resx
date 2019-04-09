@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutoUpdate" xml:space="preserve">
-    <value>Actualización automática de las traducciones</value>
+    <value>Actualización automática de las traducciones de las cartas</value>
   </data>
   <data name="Bug" xml:space="preserve">
     <value>Señalar un error</value>
@@ -136,6 +136,10 @@
     <value>Abrir Ygopro</value>
   </data>
   <data name="NopeDispo" xml:space="preserve">
-    <value>No disponible todavia</value>
+    <value>La traducción automática de las cartas
+no está disponible para esta langua</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Ayuda</value>
   </data>
 </root>

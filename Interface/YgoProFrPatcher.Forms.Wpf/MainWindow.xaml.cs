@@ -13,6 +13,8 @@ namespace YgoProFrPatcher.Forms.Wpf
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
+            this.ResizeMode = System.Windows.ResizeMode.NoResize;
+            WindowStyle = System.Windows.WindowStyle.ToolWindow;
             Title = "YgoproLauncher v" + version;
         }
     }

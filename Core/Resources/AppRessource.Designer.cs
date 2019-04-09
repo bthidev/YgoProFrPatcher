@@ -61,7 +61,7 @@ namespace YgoProFrPatcher.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic update of translations.
+        ///   Looks up a localized string similar to Automatic update of cards translations.
         /// </summary>
         internal static string AutoUpdate {
             get {
@@ -115,7 +115,8 @@ namespace YgoProFrPatcher.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No server found.
+        ///   Looks up a localized string similar to Automatic translation for cards
+        ///is not yet available for that language.
         /// </summary>
         internal static string NopeDispo {
             get {

@@ -32,6 +32,12 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             get => _textCartes;
             set => SetProperty(ref _textCartes, value);
         }
+        private string _textHelp;
+        public string TextHelp
+        {
+            get => _textHelp;
+            set => SetProperty(ref _textHelp, value);
+        }
         private string _textUpdate;
         public string TextUpdate
         {
@@ -76,7 +82,10 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             set
             {
                 var newval = false;
-                if (value != _carte) newval = true;
+                if (value != _carte)
+                {
+                    newval = true;
+                }
                 SetProperty(ref _carte, value);
                 update(newval);
             }
@@ -155,6 +164,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 TextCartes = AppRessource.ResourceManager.GetString("ChooseCartes", myCultureInfo);
                 TextBug = AppRessource.ResourceManager.GetString("Bug", myCultureInfo);
                 TextUpdate = AppRessource.ResourceManager.GetString("AutoUpdate", myCultureInfo);
+                TextHelp = AppRessource.ResourceManager.GetString("Wiki", myCultureInfo);
                 File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/strings.conf", "./strings.conf", true);
             }
         }
@@ -212,7 +222,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
 
                 // User information to create a merge commit
                 var signature = new LibGit2Sharp.Signature(
-                    new Identity("speedi57", "thiebaut.benjamin@live.fr"), DateTimeOffset.Now);
+                    new Identity("user", "user"), DateTimeOffset.Now);
 
                 // Pull
                 Commands.Pull(repo, signature, options);
@@ -221,6 +231,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             Autoupdate = _config.AutoUpdate;
             InterFace = (_config.lngInterface);
             Carte = (_config.lngCard);
+            update(true);
         }
 
     }

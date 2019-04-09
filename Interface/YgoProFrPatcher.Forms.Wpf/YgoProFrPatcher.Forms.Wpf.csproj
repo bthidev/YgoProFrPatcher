@@ -68,7 +68,7 @@
     <SolutionDir>..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconetest.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -118,7 +118,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Resource Include="iconetest.ico" />
+    <Resource Include="favicon.ico" />
     <Resource Include="..\..\DataFile\Help.png">
       <Link>Ressources\Help.png</Link>
     </Resource>
@@ -142,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Costura.Fody">
-      <Version>3.3.2</Version>
+      <Version>3.3.3</Version>
     </PackageReference>
     <PackageReference Include="LibGit2Sharp">
       <Version>0.26.0</Version>

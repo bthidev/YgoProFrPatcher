@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutoUpdate" xml:space="preserve">
-    <value>Mise à jour automatique des traductions</value>
+    <value>Mise à jour automatique des traductions des cartes</value>
   </data>
   <data name="Bug" xml:space="preserve">
     <value>Remonter un bug</value>
@@ -136,7 +136,8 @@
     <value>Lancer Ygopro</value>
   </data>
   <data name="NopeDispo" xml:space="preserve">
-    <value>Pas de fichier disponible</value>
+    <value>La traduction automatique des cartes 
+n'est pas encore disponible pour ce language</value>
   </data>
   <data name="Wiki" xml:space="preserve">
     <value>Aide</value>

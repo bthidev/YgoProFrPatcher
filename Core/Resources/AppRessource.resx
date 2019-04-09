@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutoUpdate" xml:space="preserve">
-    <value>Automatic update of translations</value>
+    <value>Automatic update of cards translations</value>
   </data>
   <data name="Bug" xml:space="preserve">
     <value>Bug found ?</value>
@@ -136,7 +136,8 @@
     <value>Start Ygopro</value>
   </data>
   <data name="NopeDispo" xml:space="preserve">
-    <value>No server found</value>
+    <value>Automatic translation for cards
+is not yet available for that language</value>
   </data>
   <data name="Wiki" xml:space="preserve">
     <value>Help</value>

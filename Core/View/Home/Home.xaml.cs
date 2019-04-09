@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using YgoProFrPatcher.Core.Resources;
@@ -16,15 +17,16 @@ namespace YgoProFrPatcher.Core.Pages.Home
         {
             InitializeComponent();
             Title = "Ygopro Percy";
+            
         }
 
         private void Button_Clicked(object sender, System.EventArgs e)
         {
-            try
+            if (File.Exists("ygopro_vs.exe"))
             {
                 Process.Start("ygopro_vs.exe");
             }
-            catch
+            else if (File.Exists("ygopro_vs_links.exe"))
             {
                 Process.Start("ygopro_vs_links.exe");
             }
@@ -38,6 +40,11 @@ namespace YgoProFrPatcher.Core.Pages.Home
         private void Button_Clicked_2(object sender, System.EventArgs e)
         {
             Device.OpenUri(new System.Uri("https://github.com/speedi57/YgoProFrPatcher/wiki"));
+        }
+
+        private void Picker_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            SwitchAuto.IsToggled = true;
         }
     }
 }

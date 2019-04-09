@@ -7,7 +7,7 @@
     x:Class="YgoProFrPatcher.Core.Pages.Home.Home"
     xmlns:page="clr-namespace:YgoProFrPatcher.Core.ViewModels.Page" >
     <ContentPage.Content>
-        <StackLayout Spacing="35" >
+        <StackLayout Spacing="35" Margin="20,20,0,0">
             <Label Text="{Binding TextTitle}" HorizontalOptions="CenterAndExpand" TextDecorations="Underline"/>
             <StackLayout  Orientation="Horizontal">
                 <Label Text="{Binding TextInterface}"  />
@@ -19,7 +19,7 @@
                     </Picker.Items>
                 </Picker>
                 <Label Text="{Binding TextCartes}" HorizontalOptions="EndAndExpand" />
-                <Picker  SelectedItem="{Binding Carte}" HorizontalOptions="End" WidthRequest="50">
+                <Picker  SelectedItem="{Binding Carte}" HorizontalOptions="End" WidthRequest="50" SelectedIndexChanged="Picker_SelectedIndexChanged">
                     <Picker.Items>
                         <x:String>fr</x:String>
                         <x:String>en</x:String>
@@ -28,13 +28,13 @@
                 </Picker>
             </StackLayout>
             <StackLayout  Orientation="Horizontal">
-                <Switch IsToggled="{Binding Autoupdate , Mode=TwoWay}" IsEnabled="{Binding EnableAuto , Mode=TwoWay}" />
-                <Label Text="{Binding TextUpdate}" />
+                <Switch IsToggled="{Binding Autoupdate , Mode=TwoWay}" IsEnabled="{Binding EnableAuto , Mode=TwoWay}" VerticalOptions="Center" x:Name="SwitchAuto"/>
+                <Label Text="{Binding TextUpdate}" VerticalOptions="Center" />
             </StackLayout>
-            <StackLayout  Orientation="Horizontal">
-                <Button Text="{Binding TextBug}" Image="./Ressources/bug.png" Clicked="Button_Clicked_1"/>
-                <Button Image="./Ressources/Help.png" Clicked="Button_Clicked_2"/>
 
+            <StackLayout  Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="EndAndExpand">
+                <Button Text="{Binding TextBug}" Image="./Ressources/bug.png" Clicked="Button_Clicked_1" HorizontalOptions="StartAndExpand" />
+                <Button Text="{Binding TextHelp}" Image="./Ressources/Help.png" Clicked="Button_Clicked_2" />
                 <Button Text="{Binding TextStart}" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked" />
 
             </StackLayout>
