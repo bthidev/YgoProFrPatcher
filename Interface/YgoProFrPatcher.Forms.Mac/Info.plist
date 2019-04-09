@@ -30,5 +30,11 @@
 	<string>Yes</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.productivity</string>
+	<key>Custom Property</key>
+	<string></string>
+		<key>UIAppFonts</key>
+	<array>
+	   <string>Ressources/Ubuntu-R.ttf</string>
+	</array>
 </dict>
 </plist>

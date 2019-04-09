@@ -29,7 +29,7 @@
     <Color x:Key="AccentColor">#0099CC</Color>
     <!-- Styles -->
     <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
-        <On Platform="macOS" Value="Material Design Icons" />
+        <On Platform="macOS" Value="Ubuntu" />
         <On Platform ="WPF" Value="Assets/#Ubuntu"/>
     </OnPlatform>
     <Style TargetType="Button">

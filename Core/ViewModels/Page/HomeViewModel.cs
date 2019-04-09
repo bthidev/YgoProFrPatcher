@@ -155,7 +155,7 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 TextCartes = AppRessource.ResourceManager.GetString("ChooseCartes", myCultureInfo);
                 TextBug = AppRessource.ResourceManager.GetString("Bug", myCultureInfo);
                 TextUpdate = AppRessource.ResourceManager.GetString("AutoUpdate", myCultureInfo);
-                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + " /strings.conf", "./strings.conf", true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/strings.conf", "./strings.conf", true);
             }
         }
         private void SetCard(string lang)
@@ -167,14 +167,14 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
         }
         private void SetAuto(bool enable)
         {
-            string exactPath = Path.GetFullPath(GlobalStyles.GetRoot + "expansions /live2017links/.git/config");
+            string exactPath = Path.GetFullPath(GlobalStyles.GetRoot + "expansions/live2017links/.git/config");
             if (File.Exists(GlobalStyles.GetRoot + "ypfr/" + Carte + "/config"))
             {
                 EnableAuto = true;
 
                 if (enable)
                 {
-                    File.Copy(GlobalStyles.GetRoot + "ypfr/" + Carte + " /config", exactPath, true);
+                    File.Copy(GlobalStyles.GetRoot + "ypfr/" + Carte + "/config", exactPath, true);
                     EnableAuto = true;
                 }
                 else
