@@ -63,42 +63,39 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
             set => SetProperty(ref _textTitle, value);
         }
 
-        private string _interFace;
         public string InterFace
         {
-            get => _interFace;
+            get => _config.lngInterface;
             set
             {
                 var newval = false;
-                if (value != _interFace) newval = true;
-                SetProperty(ref _interFace, value);
+                if (value != _config.lngInterface) newval = true;
+                _config.lngInterface =  value;
                 update(newval);
             }
         }
-        private string _carte;
         public string Carte
         {
-            get => _carte;
+            get => _config.lngCard;
             set
             {
                 var newval = false;
-                if (value != _carte)
+                if (value != _config.lngCard)
                 {
                     newval = true;
                 }
-                SetProperty(ref _carte, value);
+                _config.lngCard =  value;
                 update(newval);
             }
         }
-        bool _autoupdate;
         public bool Autoupdate
         {
-            get => _autoupdate;
+            get => _config.AutoUpdate;
             set
             {
                 var newval = false;
-                if ( value != _autoupdate) newval = true;
-                SetProperty(ref _autoupdate, value);
+                if ( value != _config.AutoUpdate) newval = true;
+                _config.AutoUpdate =  value;
                 update(newval);
             }
         }
@@ -147,9 +144,6 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 SetLang(InterFace);
                 SetCard(Carte);
                 SetAuto(Autoupdate);
-                _config.lngInterface = InterFace;
-                _config.lngCard = Carte;
-                _config.AutoUpdate = Autoupdate;
                 _configService.SetConfig(_config);
             }
         }
@@ -227,10 +221,6 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 // Pull
                 Commands.Pull(repo, signature, options);
             }
-            List<string> lstlng = new List<string>();
-            Autoupdate = _config.AutoUpdate;
-            InterFace = (_config.lngInterface);
-            Carte = (_config.lngCard);
             update(true);
         }
 
