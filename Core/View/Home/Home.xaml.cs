@@ -30,6 +30,12 @@ namespace YgoProFrPatcher.Core.Pages.Home
             {
                 Process.Start("ygopro_vs_links.exe");
             }
+            else 
+            {
+                var test = Directory.GetDirectories(GlobalStyles.GetRoot);
+                var temp =  GlobalStyles.GetRoot + "Ygopro.app";
+                Process.Start(temp);
+            }
         }
 
         private void Button_Clicked_1(object sender, System.EventArgs e)

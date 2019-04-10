@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YgoProFrPatcher.Forms.Wpf", "Interface\YgoProFrPatcher.Forms.Wpf\YgoProFrPatcher.Forms.Wpf.csproj", "{BA2C0719-5EB2-487A-94AE-C02A7053C1E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YgoProFrPatcher.Core", "Core\YgoProFrPatcher.Core.csproj", "{52651F83-ED9C-41E1-9D1C-0A7C9644D141}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YgoProFrPatcher.Core", "Core\YgoProFrPatcher.Core.csproj", "{52651F83-ED9C-41E1-9D1C-0A7C9644D141}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

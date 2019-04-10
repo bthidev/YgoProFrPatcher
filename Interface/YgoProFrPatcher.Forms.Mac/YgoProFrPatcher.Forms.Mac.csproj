@@ -176,6 +176,10 @@
       <Link>Resources\Ressources\Ubuntu-R.ttf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="..\..\packages\LibGit2Sharp.NativeBinaries.2.0.267\runtimes\osx\native\libgit2-572e4d8.dylib">
+      <Link>Resources\libgit2-572e4d8.dylib</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

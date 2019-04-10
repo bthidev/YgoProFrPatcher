@@ -32,9 +32,9 @@
 	<string>public.app-category.productivity</string>
 	<key>Custom Property</key>
 	<string></string>
-		<key>UIAppFonts</key>
+	<key>UIAppFonts</key>
 	<array>
-	   <string>Ressources/Ubuntu-R.ttf</string>
+		<string>Ressources/Ubuntu-R.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -32,8 +32,8 @@
                 <Label Text="{Binding TextUpdate}" VerticalOptions="Center" />
             </StackLayout>
 
-            <StackLayout  Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="EndAndExpand">
-                <Button Text="{Binding TextBug}" Image="./Ressources/bug.png" Clicked="Button_Clicked_1" HorizontalOptions="StartAndExpand" />
+            <StackLayout  Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="EndAndExpand" >
+                <Button Text="{Binding TextBug}"  Image="./Ressources/bug.png" Clicked="Button_Clicked_1" HorizontalOptions="StartAndExpand" />
                 <Button Text="{Binding TextHelp}" Image="./Ressources/Help.png" Clicked="Button_Clicked_2" />
                 <Button Text="{Binding TextStart}" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked" />
 

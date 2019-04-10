@@ -8,7 +8,9 @@ namespace YgoProFrPatcher.Forms.Mac
         static void Main(string[] args)
         {
             NSApplication.Init();
-            NSApplication.SharedApplication.Delegate = new AppDelegate();
+            var temp = (new AppDelegate());
+            temp.MainWindow.MaxSize = new CoreGraphics.CGSize(550, 250);
+            NSApplication.SharedApplication.Delegate = temp;
             Directory.GetCurrentDirectory();
             NSApplication.Main(args);
         }

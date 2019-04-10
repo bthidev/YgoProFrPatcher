@@ -8,6 +8,10 @@ namespace YgoProFrPatcher.Forms.Mac
     [Register("AppDelegate")]
     public class AppDelegate : MvxFormsApplicationDelegate<Setup, App, FormsApp>
     {
+
+        public void AppDelAppDelegate() {
+
+        }
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
         {
             return true;

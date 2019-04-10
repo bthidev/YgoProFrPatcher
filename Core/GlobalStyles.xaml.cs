@@ -13,7 +13,7 @@ namespace YgoProFrPatcher.Core
                     return "./";
 
                 else
-                    return "./../../";
+                    return "./../../../";
             } }
 	}
 }
