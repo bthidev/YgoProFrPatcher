@@ -33,7 +33,7 @@ namespace YgoProFrPatcher.Core.Pages.Home
             else 
             {
                 var test = Directory.GetDirectories(GlobalStyles.GetRoot);
-                var temp =  GlobalStyles.GetRoot + "Ygopro.app";
+                var temp =  GlobalStyles.GetRoot + "Ygopro.app/Contents/MacOS/Ygopro";
                 Process.Start(temp);
             }
         }

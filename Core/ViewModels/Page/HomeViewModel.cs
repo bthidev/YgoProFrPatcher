@@ -159,14 +159,14 @@ namespace YgoProFrPatcher.Core.ViewModels.Page
                 TextBug = AppRessource.ResourceManager.GetString("Bug", myCultureInfo);
                 TextUpdate = AppRessource.ResourceManager.GetString("AutoUpdate", myCultureInfo);
                 TextHelp = AppRessource.ResourceManager.GetString("Wiki", myCultureInfo);
-                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/strings.conf", "./strings.conf", true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/strings.conf", GlobalStyles.GetRoot+"strings.conf", true);
             }
         }
         private void SetCard(string lang)
         {
             if (lang != null)
             {
-                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/cards.cdb", "./cards.cdb", true);
+                File.Copy(GlobalStyles.GetRoot + "ypfr/" + lang + "/cards.cdb", GlobalStyles.GetRoot+"cards.cdb", true);
             }
         }
         private void SetAuto(bool enable)
